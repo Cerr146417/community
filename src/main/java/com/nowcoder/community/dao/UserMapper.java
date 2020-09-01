@@ -3,6 +3,13 @@ package com.nowcoder.community.dao;
 import com.nowcoder.community.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
+/**
+ * @InterfaceName UserMapper
+ * @Description 用户的数据访问层接口
+ * @Author cxc
+ * @Date 2020/8/31 17:09
+ * @Verseion 1.0
+ **/
 @Mapper
 public interface UserMapper {
 

@@ -19,7 +19,7 @@ import java.util.Map;
 
 /**
  * @ClassName HomeController
- * @Description
+ * @Description 首页控制器类
  * @Author cxc
  * @Date 2020/8/31 19:50
  * @Verseion 1.0
@@ -32,6 +32,12 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    /**
+     * @Description 展示首页
+     * @param model 视图
+     * @param page 分页
+     * @return 转发到首页
+     */
     @RequestMapping(path = "/index",method = RequestMethod.GET)
     public String getIndexPage(Model model, Page page){
         //方法调用前，SpringMVC会自动实例化model和page，并将page注入model，所以在thymeleaf可以直接访问page
@@ -47,11 +53,19 @@ public class HomeController {
                 map.put("post",post);
                 User user = userService.findUserById(post.getUserId());
                 map.put("user",user);
-                System.out.println(post.getUserId());
                 discussPosts.add(map);
             }
         }
         model.addAttribute("discussPosts",discussPosts);
         return "/index";
+    }
+
+    /**
+     * @Description 跳转到500页面
+     * @return 转发到500页面
+     */
+    @RequestMapping(path = "/error",method = RequestMethod.GET)
+    public String getErrorPage(){
+        return "/error/500";
     }
 }
