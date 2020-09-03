@@ -94,4 +94,56 @@ public class MessageService {
     public int readMessage(List<Integer> ids){
         return messageMapper.updateStatus(ids,1);
     }
+
+    /**
+     * @Author caixucheng
+     * @Description 查询某个主题下最新的通知
+     * @Date 0:14 2020/9/4
+     * @param userId 用户id
+     * @param topic 主题
+     * @return com.nowcoder.community.entity.Message
+     **/
+    public Message findLatestNotice(int userId,String topic){
+        return messageMapper.selectLatestNotice(userId,topic);
+    }
+    
+    /**
+     * @Author caixucheng
+     * @Description 查询某个主题所包含的通知数量
+     * @Date 0:14 2020/9/4
+     * @param userId 用户id
+     * @param topic 主题
+     * @return int
+     **/
+    public int findNoticeCount(int userId,String topic){
+        return messageMapper.selectNoticeCount(userId,topic);
+    }
+
+    /**
+     * @Author caixucheng
+     * @Description 显示未读的通知的数量
+     * @Date 0:14 2020/9/4
+     * @param userId 用户id
+     * @param topic 主题
+     * @return int
+     **/
+    public int findNoticeUnreadCount(int userId,String topic){
+        return messageMapper.selectNoticeUnreadCount(userId,topic);
+    }
+
+    /**
+     * @Author caixucheng
+     * @Description 查询某个主题所有的通知
+     * @Date 0:59 2020/9/4
+     * @param userId
+     * @param topic
+     * @param offset
+     * @param limit
+     * @return java.util.List<com.nowcoder.community.entity.Message>
+     **/
+    public List<Message> findNotices(int userId,String topic,int offset,int limit){
+        return messageMapper.selectNotices(userId,topic,offset,limit);
+    }
+
+
 }

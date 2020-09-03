@@ -75,4 +75,15 @@ public class CommentService implements CommunityConstant {
 
         return rows;
     }
+
+    /**
+     * @Author caixucheng
+     * @Description 根据id查询评论
+     * @Date 22:12 2020/9/3
+     * @param id 评论id
+     * @return com.nowcoder.community.entity.Comment 评论
+     **/
+    public Comment findCommentById(int id){
+        return commentMapper.selectCommentById(id);
+    }
 }

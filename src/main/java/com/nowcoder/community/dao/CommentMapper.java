@@ -38,4 +38,13 @@ public interface CommentMapper {
      * @param comment 评论类
      */
     int insertComment(Comment comment);
+
+    /**
+     * @Author caixucheng
+     * @Description 根据id查询评论
+     * @Date 22:10 2020/9/3
+     * @param id 评论id
+     * @return com.nowcoder.community.entity.Comment 评论
+     **/
+    Comment selectCommentById(int id);
 }

@@ -67,4 +67,49 @@ public interface MessageMapper {
      * @param status 状态
      */
     int updateStatus(List<Integer> ids,int status);
+
+    /**
+     * @Author caixucheng
+     * @Description 查询某个主题下最新的通知
+     * @Date 23:55 2020/9/3
+     * @param userId 用户id
+     * @param topic 主题
+     * @return com.nowcoder.community.entity.Message
+     **/
+    Message selectLatestNotice(int userId,String topic);
+
+    /**
+     * @Author caixucheng
+     * @Description 查询某个主题所包含的通知数量
+     * @Date 23:56 2020/9/3
+     * @param userId 用户id
+     * @param topic 主题
+     * @return int 某个主题所包含的通知数量
+     **/
+    int selectNoticeCount(int userId,String topic);
+
+
+    /**
+     * @Author caixucheng
+     * @Description 显示未读的通知的数量
+     * @Date 23:57 2020/9/3
+     * @param userId 用户id
+     * @param topic 主题
+     * @return int 未读的通知的数量
+     **/
+    int selectNoticeUnreadCount(int userId,String topic);
+
+    /**
+     * @Author caixucheng
+     * @Description 查询某个主题所包含的通知列表
+     * @Date 0:53 2020/9/4
+     * @param userId
+     * @param topic
+     * @param offset
+     * @param limit
+     * @return java.util.List<com.nowcoder.community.entity.Message>
+     **/
+    List<Message> selectNotices(int userId,String topic,int offset,int limit);
+
+
 }
