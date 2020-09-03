@@ -7,3 +7,6 @@
 * 使用Redis完成了点赞模块。
 * 使用Redis完成了关注模块。
 * 使用Redis对登录模块进行了优化，废弃了`LoginTicket`表及对应的dao、service类。
+
+## 2020.09.03
+* 使用kafka实现了消息通知模块。
