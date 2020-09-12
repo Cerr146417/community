@@ -76,4 +76,15 @@ public class HomeController implements CommunityConstant {
     public String getErrorPage(){
         return "/error/500";
     }
+
+
+    /**
+     * @Author caixucheng
+     * @Description 权限不足时跳转的页面
+     * @Date 0:17 2020/9/12
+     **/
+    @RequestMapping(path = "/denied",method = RequestMethod.GET)
+    public String getDeniedPage(){
+        return "/error/404";
+    }
 }

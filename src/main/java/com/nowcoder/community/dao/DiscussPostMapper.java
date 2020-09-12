@@ -53,4 +53,24 @@ public interface DiscussPostMapper {
      * @param commentCount 评论数量
      */
     int updateCommentCount(int id,int commentCount);
+
+    /**
+     * @Author caixucheng
+     * @Description 根据帖子id修改帖子类型
+     * @Date 12:38 2020/9/12
+     * @param id 帖子id
+     * @param type 帖子类型
+     * @return int
+     **/
+    int updateType(int id,int type);
+
+    /**
+     * @Author caixucheng
+     * @Description 根据帖子id修改帖子状态
+     * @Date 12:39 2020/9/12
+     * @param id 帖子id
+     * @param status 帖子状态
+     * @return int
+     **/
+    int updateStatus(int id,int status);
 }

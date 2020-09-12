@@ -36,7 +36,7 @@
     </select>
 
     <!-- 插入帖子 -->
-    <insert id="insertDiscussPost" parameterType="com.nowcoder.community.entity.DiscussPost">
+    <insert id="insertDiscussPost" parameterType="com.nowcoder.community.entity.DiscussPost" keyProperty="id">
         insert into discuss_post (<include refid="insertFields"></include>)
         values (#{userId},#{title},#{content},#{type},#{status},#{createTime},#{commentCount},#{score})
     </insert>   
@@ -51,6 +51,16 @@
     <!-- 更新帖子的评论数 -->
     <update id="updateCommentCount">
         update discuss_post set comment_count = #{commentCount} where id = #{id}
+    </update>
+
+    <!-- 根据帖子id修改帖子类型 -->
+    <update id="updateType">
+        update discuss_post set type = #{type} where id = #{id}
+    </update>
+
+    <!-- 根据帖子id修改帖子状态 -->
+    <update id="updateStatus">
+        update discuss_post set status = #{status} where id = #{id}
     </update>
 
 </mapper>

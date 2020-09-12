@@ -45,6 +45,16 @@ public class RedisKeyUtil {
      */
     private static final String PREFIX_USER = "user";
 
+    /**
+     * UV前缀
+     */
+    private static final String PREFIX_UV = "uv";
+
+    /**
+     * 日活跃用户前缀
+     */
+    private static final String PREFIX_DAU = "dau";
+
 
     /**
      * 某个实体的赞 形如like:entity:entityType:entityId
@@ -106,7 +116,6 @@ public class RedisKeyUtil {
      * @Description 获取登录凭证key
      * @Date 21:17 2020/9/2
      * @param ticket 登录凭证字符串
-     * @return java.lang.String
      **/
     public static String getTicketKey(String ticket){
         return PREFIX_TICKET + SPLIT + ticket;
@@ -117,10 +126,54 @@ public class RedisKeyUtil {
      * @Description 获取用户key
      * @Date 21:31 2020/9/2
      * @param userId 用户id
-     * @return java.lang.String
      **/
     public static String getUserKey(int userId){
         return PREFIX_USER + SPLIT + userId;
     }
+
+
+    /**
+     * @Author caixucheng
+     * @Description 获取单日UV的key
+     * @Date 21:45 2020/9/12
+     * @param date 日期字符串
+     **/
+    public static String getUVKey(String date){
+        return PREFIX_UV + SPLIT + date;
+    }
+
+    /**
+     * @Author caixucheng
+     * @Description 获取区间UV的key
+     * @Date 21:46 2020/9/12
+     * @param startDate 开始时间
+     * @param endDate 结束时间
+     **/
+    public static String getUVKey(String startDate,String endDate){
+        return PREFIX_UV + SPLIT + startDate + SPLIT + endDate;
+    }
+
+    /**
+     * @Author caixucheng
+     * @Description 获取日活跃用户的key
+     * @Date 21:48 2020/9/12
+     * @param date 日期字符串
+     **/
+    public static String getDAUKey(String date){
+        return PREFIX_DAU + SPLIT + date;
+    }
+
+    /**
+     * @Author caixucheng
+     * @Description 获取区间活跃用户的key
+     * @Date 21:48 2020/9/12
+     * @param startDate 开始时间
+     * @param endDate 结束时间
+     **/
+    public static String getDAUKey(String startDate,String endDate){
+        return PREFIX_DAU + SPLIT + startDate + SPLIT + endDate;
+    }
+
+
 
 }

@@ -19,6 +19,7 @@ import java.lang.reflect.Method;
  * @Verseion 1.0
  **/
 @Component
+@Deprecated
 public class LoginRequiredInterceptor implements HandlerInterceptor {
 
     @Autowired

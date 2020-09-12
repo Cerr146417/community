@@ -1,5 +1,12 @@
 package com.nowcoder.community.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.DateFormat;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import java.util.Date;
 
 /**
@@ -9,16 +16,40 @@ import java.util.Date;
  * @Date 2020/8/31 14:26
  * @Verseion 1.0
  **/
+@Document(indexName = "discusspost",type = "_doc",shards = 6,replicas = 3)
 public class DiscussPost {
 
+    @Id
     private int id;
+
+    @Field(type = FieldType.Integer)
     private int userId;
+
+    //analyzer存储的时候使用的分词器,searchAnalyzer搜索的时候使用的分词器
+    @Field(type = FieldType.Text,analyzer = "ik_max_word",searchAnalyzer = "ik_smart")
     private String title;
+
+    @Field(type = FieldType.Text,analyzer = "ik_max_word",searchAnalyzer = "ik_smart")
     private String content;
+
+    @Field(type = FieldType.Integer)
     private int type;   //类型
+
+    @Field(type = FieldType.Integer)
     private int status; //状态
+
+    //@JsonFormat(shape =JsonFormat.Shape.STRING,pattern ="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
+    //format = DateFormat.custom,pattern ="yyyy-MM-dd HH:mm:ss"
+//    @Field(type = FieldType.Date,format = DateFormat.date_optional_time)
+//    private Date createTime;
+    @Field(type = FieldType.Date)
     private Date createTime;
+
+
+    @Field(type = FieldType.Integer)
     private int commentCount;   //评论数量
+
+    @Field(type = FieldType.Double)
     private double score;   //分数
 
     public int getId() {
@@ -106,5 +137,8 @@ public class DiscussPost {
                 ", commentCount=" + commentCount +
                 ", score=" + score +
                 '}';
+    }
+
+    public DiscussPost() {
     }
 }

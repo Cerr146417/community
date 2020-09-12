@@ -196,8 +196,8 @@ public class MessageController implements CommunityConstant {
         // 查询评论类的通知
         Message message = messageService.findLatestNotice(user.getId(),TOPIC_COMMENT);
         Map<String,Object> messageVO = new HashMap<>();
+        System.out.println("xiaoxi1djdksjkdsj：："+message);
         if (message != null){
-            messageVO.put("message",message);
             String content = HtmlUtils.htmlUnescape(message.getContent());
             Map<String,Object> data = JSONObject.parseObject(content,HashMap.class);
 
@@ -212,13 +212,14 @@ public class MessageController implements CommunityConstant {
             int unread = messageService.findNoticeUnreadCount(user.getId(),TOPIC_COMMENT);
             messageVO.put("unread",unread);
         }
+        messageVO.put("message",message);
         model.addAttribute("commentNotice",messageVO);
 
         // 查询点赞类的通知
         message = messageService.findLatestNotice(user.getId(),TOPIC_LIKE);
         messageVO = new HashMap<>();
         if (message != null){
-            messageVO.put("message",message);
+
             String content = HtmlUtils.htmlUnescape(message.getContent());
             Map<String,Object> data = JSONObject.parseObject(content,HashMap.class);
 
@@ -233,12 +234,14 @@ public class MessageController implements CommunityConstant {
             int unread = messageService.findNoticeUnreadCount(user.getId(),TOPIC_LIKE);
             messageVO.put("unread",unread);
         }
+        messageVO.put("message",message);
         model.addAttribute("likeNotice",messageVO);
         // 查询关注类的通知
         message = messageService.findLatestNotice(user.getId(),TOPIC_FOLLOW);
         messageVO = new HashMap<>();
+
         if (message != null){
-            messageVO.put("message",message);
+
             String content = HtmlUtils.htmlUnescape(message.getContent());
             Map<String,Object> data = JSONObject.parseObject(content,HashMap.class);
 
@@ -252,6 +255,7 @@ public class MessageController implements CommunityConstant {
             int unread = messageService.findNoticeUnreadCount(user.getId(),TOPIC_FOLLOW);
             messageVO.put("unread",unread);
         }
+        messageVO.put("message",message);
         model.addAttribute("followNotice",messageVO);
 
         // 显示未读消息数量
